@@ -13,9 +13,9 @@ pipeline {
     }
     stage('check-secrets') {
           steps {
-            sh "rm truffle-logs || true"
-            sh "docker run gesellix/trufflehog --json  https://github.com/dxa4481/truffleHog.git > truffle-logs"
-            sh "cat truffle-logs"
+            sh "rm truffle || true"
+            sh " docker run gesellix/trufflehog --json  https://github.com/rituraj-gaur/EVCache.git > truffle"
+            sh "cat truffle"
           }
         }
   }
