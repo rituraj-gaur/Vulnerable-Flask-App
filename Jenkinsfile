@@ -1,22 +1,17 @@
 pipeline {
   agent any
   stages {
-    stage('Meta-data') {
+    stage('version') {
       steps {
-
         echo " Running build number: $BUILD_NUMBER"
         echo  "Running build no :  $BUILD_ID"
       }
     }
-    stage('git-clone') {
+    stage('build') {
       steps {
-        echo 'Current working folder : '
-        echo pwd
-        mkdir clone
-        cd clone
-        git clone "https://github.com/rituraj-gaur/WebGoat.git"
-        echo "Repo cloned successfully"
+        echo "Current workspace is $WORKSPACE"
       }
     }
   }
 }
+
