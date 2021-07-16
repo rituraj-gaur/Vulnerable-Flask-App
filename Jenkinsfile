@@ -14,7 +14,7 @@ pipeline {
     stage('check-secrets') {
           steps {
             sh "rm truffle-logs || true"
-            sh "/home/thanos/.local/bin/trufflehog --json --regex --entropy=False https://github.com/dxa4481/truffleHog.git > truffle-logs"
+            sh "docker run gesellix/trufflehog --json  https://github.com/dxa4481/truffleHog.git > truffle-logs"
             sh "cat truffle-logs"
           }
         }
