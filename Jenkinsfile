@@ -11,7 +11,7 @@ pipeline {
     stage('git-clone') {
       steps {
         echo 'Current working folder : '
-        echo `pwd`
+        echo pwd
         mkdir clone
         cd clone
         git clone "https://github.com/rituraj-gaur/WebGoat.git"
