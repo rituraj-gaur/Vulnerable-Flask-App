@@ -19,9 +19,9 @@ pipeline {
     stage('check-secrets') {
           steps {
             sh 'cd $WORKSPACE'
-            sh "sudo rm /home/thanos/tools/truffle || true"
+            sh "rm truffle || true"
             //sh "docker run gesellix/trufflehog --json  https://github.com/rituraj-gaur/EVCache.git > truffle"
-            sh 'sudo docker run --rm -v "$(pwd):/proj" dxa4481/trufflehog --json file:///proj > /home/thanos/tools/truffle'
+            sh 'docker run --rm -v "$(pwd):/proj" dxa4481/trufflehog --json file:///proj > truffle'
             sh "cat truffle"
           }
         }
