@@ -12,7 +12,7 @@ pipeline {
     }
     stage('git-clone') {
           steps {
-            git credentialsId: 'jenkins_pat', url: 'https://github.com/rituraj-gaur/EVCache.git'
+            git credentialsId: 'jenkins-pat', url: 'https://github.com/rituraj-gaur/EVCache.git'
           }
         }
 
