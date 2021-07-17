@@ -12,11 +12,11 @@ pipeline {
     }
     stage('git-clone') {
           steps {
-            git credentialsId: 'jenkins-pat', url: 'https://github.com/rituraj-gaur/EVCache.git'
+            git credentialsId: 'jenkins-pat', url: 'https://github.com/rituraj-gaur/Vulnerable-Flask-App.git'
           }
         }
 
-    stage('check-secrets') {
+    /*stage('check-secrets') {
           steps {
             sh 'cd $WORKSPACE'
             sh "rm truffle || true"
@@ -24,7 +24,8 @@ pipeline {
             sh 'docker run --rm -v "$(pwd):/proj" dxa4481/trufflehog --json file:///proj > truffle'
             sh "cat truffle"
           }
-        }
+        }*/
+
   }
 }
 
