@@ -1,7 +1,8 @@
 pipeline {
   agent any
   environment{
-    git_cred = credentials('jenkins-pat')
+    #For demo jenkins
+	git_cred = credentials('jenkins-pat')
   }
   stages {
     stage('meta-data') {
