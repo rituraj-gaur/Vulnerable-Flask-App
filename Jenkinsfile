@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment{
-    #For demo jenkins
+    //For demo jenkins
 	git_cred = credentials('jenkins-pat')
   }
   stages {
