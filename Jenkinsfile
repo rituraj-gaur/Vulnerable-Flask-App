@@ -31,20 +31,20 @@ pipeline {
                    includeOpenSourceFolders: '',
                    osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz',
                    osaInstallBeforeScan: false,
-                   password: '{}',
+                   password: 'r8@systec123',
                    preset: '',
                    projectName: "${PROJECT_NAME}",
                    sastEnabled: true,
-                   serverUrl: 'https://checkmarx.abc.com',
+                   serverUrl: 'https://cx.dell.com',
                    sourceEncoding: '1',
-                   username: '',
+                   username: 'rituraj_gaur',
                    vulnerabilityThresholdResult: 'FAILURE',
                    waitForResultsEnabled: true])
           }
         }
         stage('Open Source Compliance') {
           steps {
-              sh "echo ALL STAGES HAVE COMPLETED!"
+              sh "echo RUN BLACKDUCK HERE"
           }
         }
       }
