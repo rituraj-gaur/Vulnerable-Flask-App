@@ -14,7 +14,7 @@ pipeline {
       }
     }
     stage('Checkmarx SAST') {
-                step([$class: 'CxScanBuilder',
+                steps([$class: 'CxScanBuilder',
                        comment: '',
                        credentialsId: '',
                        excludeFolders: '.helmignore, build, templates, javadocs, javadoc',
