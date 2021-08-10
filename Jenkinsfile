@@ -9,6 +9,7 @@ pipeline {
       steps {
         echo "BUILD NUMBER: $BUILD_NUMBER"
         echo "Current workspace: $WORKSPACE"
+	echo "Project name : $PROJECT_NAME"
       }
     }
     stage('git-clone') {
