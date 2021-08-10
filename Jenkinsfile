@@ -44,8 +44,7 @@ pipeline {
         }
         stage('Open Source Compliance') {
           steps {
-            blackduck([appName: "${APP_NAME}", appDomain: "${APP_DOMAIN}", branchName: 
-            "master"])
+              sh "echo ALL STAGES HAVE COMPLETED!"
           }
         }
       }
