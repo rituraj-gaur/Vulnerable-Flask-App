@@ -13,43 +13,12 @@ pipeline {
         echo "Project value received: $PROJECT_NAME "
       }
     }
-    stage('Code Scanning') {
-          parallel {
-            stage('Static Code Analysis') {
-            steps {
-             step([$class: 'CxScanBuilder',
-                   comment: '',
-                   credentialsId: '',
-                   excludeFolders: '.helmignore, build, templates, javadocs, javadoc',
-                   excludeOpenSourceFolders: '',
-                   exclusionsSetting: 'global',
-                   failBuildOnNewResults: false,
-                   failBuildOnNewSeverity: 'MEDIUM',
-                   filterPattern: '''!**/_cvs/**/*, !Checkmarx/Reports/*.*''',
-                   fullScanCycle: 10,
-                   groupId: '0de2e46c-8410-478a-85b9-b5dce83f8ecb',
-                   includeOpenSourceFolders: '',
-                   osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz',
-                   osaInstallBeforeScan: false,
-                   password: 'r8@systec123',
-                   preset: '',
-                   projectName: "${PROJECT_NAME}",
-                   sastEnabled: true,
-                   serverUrl: 'https://cx.dell.com',
-                   sourceEncoding: '1',
-                   username: 'rituraj_gaur',
-                   vulnerabilityThresholdResult: 'FAILURE',
-                   waitForResultsEnabled: true])
-          }
+    stage('Checkmarx SAST') {
+        steps{
+            step([$class: 'CxScanBuilder', addGlobalCommenToBuildCommet: true, avoidDuplicateProjectScans: true, comment: '', configAsCode: true, credentialsId: 'dell-cx', excludeFolders: '', exclusionsSetting: 'global', failBuildOnNewResults: false, failBuildOnNewSeverity: 'HIGH', filterPattern: '', fullScanCycle: 10, generatePdfReport: true, password: '{AQAAABAAAAAQ7pgOZ/zzWYWkB0TLRuHvttT+Nj/qJkF62hJUn+fZJiM=}', projectName: $PROJECT_NAME, sastEnabled: true, serverUrl: 'https://cx.dell.com', sourceEncoding: 'Provide Checkmarx server credentials to see source encodings list', useOwnServerCredentials: true, username: '', vulnerabilityThresholdResult: 'FAILURE', waitForResultsEnabled: true])
         }
-        stage('Open Source Compliance') {
-          steps {
-              sh "echo RUN BLACKDUCK HERE"
-          }
-        }
-      }
     }
-
+   
    //Orignal End
   }
 }
