@@ -14,7 +14,6 @@ pipeline {
       }
     }
     stage('Checkmarx SAST') {
-          steps {
                 step([$class: 'CxScanBuilder',
                        comment: '',
                        credentialsId: '',
@@ -39,7 +38,7 @@ pipeline {
                        username: '',
                        vulnerabilityThresholdResult: 'FAILURE',
                        waitForResultsEnabled: true])
-          }
+          
     }
   }
 }
