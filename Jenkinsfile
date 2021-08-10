@@ -4,7 +4,7 @@ pipeline {
     //For demo jenkins
     	git_cred = credentials('jenkins-pat')
   }
-  
+
   stages {
     stage('meta-data') {
       steps {
@@ -18,9 +18,7 @@ pipeline {
                 step([$class: 'CxScanBuilder',
                        comment: '',
                        credentialsId: '',
-                       excludeFolders: '.helmignore, build, templates, javadocs, javadoc,
-                                                   dist, node_modules, WMSRegistryReader.java,
-                                                   BlowfishEncryptionStrategy.java, BlowfishUtils.java',
+                       excludeFolders: '.helmignore, build, templates, javadocs, javadoc',
                        excludeOpenSourceFolders: '',
                        exclusionsSetting: '',
                        failBuildOnNewResults: false,
@@ -35,15 +33,15 @@ pipeline {
                        password: '{}',
                        preset: '36',
                        projectName: ${PROJECT_NAME},
-                                    sastEnabled: true,
-                                    serverUrl: 'https://checkmarx.abc.com',
-                                    sourceEncoding: '1',
-                                    username: '',
-                                    vulnerabilityThresholdResult: 'FAILURE',
-                                    waitForResultsEnabled: true])
-                }
-           }
+                       sastEnabled: true,
+                       serverUrl: 'https://checkmarx.abc.com',
+                       sourceEncoding: '1',
+                       username: '',
+                       vulnerabilityThresholdResult: 'FAILURE',
+                       waitForResultsEnabled: true])
+          }
     }
+  }
 }
 //stage('Open Source Compliance') {
 //          steps {
