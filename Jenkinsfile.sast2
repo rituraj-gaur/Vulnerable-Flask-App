@@ -1,0 +1,29 @@
+pipeline {
+  agent any
+  environment{
+    //For demo jenkins
+    	git_cred = credentials('jenkins-pat')
+  }
+
+  stages {
+    stage('SCM Checkout') {
+      steps {
+        git url
+      }
+    }
+    stage('Checkmarx SAST') {
+        steps{
+            sh 'echo DO CHECKMARX SAST HERE'
+            }
+    }
+
+   //Orignal End
+  }
+}
+//stage('Open Source Compliance') {
+//          steps {
+//            blackduck([appName: "${APP_NAME}", appDomain: "${APP_DOMAIN}", branchName:
+//            "master"])
+//          }
+//        }
+

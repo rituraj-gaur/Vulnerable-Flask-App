@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Checkmarx SAST') {
         steps{
-            step([$class: 'CxScanBuilder', addGlobalCommenToBuildCommet: true, avoidDuplicateProjectScans: true, comment: '', configAsCode: true, credentialsId: 'dell-cx', excludeFolders: '', exclusionsSetting: '', failBuildOnNewResults: false, failBuildOnNewSeverity: 'HIGH', filterPattern: '', fullScanCycle: 10, generatePdfReport: true, password: '{AQAAABAAAAAQ7pgOZ/zzWYWkB0TLRuHvttT+Nj/qJkF62hJUn+fZJiM=}', projectName: ${env.PROJECT_NAME}, sastEnabled: true, serverUrl: 'https://cx.dell.com', sourceEncoding: 'Provide Checkmarx server credentials to see source encodings list', teamPath: ${TEAM_NAME} , useOwnServerCredentials: true, username: '', vulnerabilityThresholdResult: 'FAILURE', waitForResultsEnabled: true])
+            step([$class: 'CxScanBuilder', addGlobalCommenToBuildCommet: true, avoidDuplicateProjectScans: true, comment: '', configAsCode: true, credentialsId: 'dell-cx', excludeFolders: '', exclusionsSetting: 'global', failBuildOnNewResults: false, failBuildOnNewSeverity: 'HIGH', filterPattern: '', fullScanCycle: 10, generatePdfReport: true, password: '{AQAAABAAAAAQ7pgOZ/zzWYWkB0TLRuHvttT+Nj/qJkF62hJUn+fZJiM=}', projectName: ${PROJECT_NAME}, sastEnabled: true, serverUrl: 'https://cx.dell.com', sourceEncoding: 'Provide Checkmarx server credentials to see source encodings list', useOwnServerCredentials: true, username: '', vulnerabilityThresholdResult: 'FAILURE', waitForResultsEnabled: true])
         }
     }
 
