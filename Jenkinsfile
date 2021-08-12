@@ -17,7 +17,7 @@ pipeline {
      stage('git-clone') {
         steps {
                 // git credentialsId: 'jenkins-pat', url: "${env.git_url}"
-                git credentialsId: 'jenkins-pat', url: ${GIT_SRC}
+                git credentialsId: 'jenkins-pat', url: "${params.GIT_SRC}"
         }
       }
     stage('Checkmarx SAST') {
