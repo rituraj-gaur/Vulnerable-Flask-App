@@ -10,7 +10,7 @@ pipeline {
         		stage ("Python Bandit Security Scan"){
         			steps{
         			    sh "echo Path now is $PATH"
-            		    sh "bandit -r $WORKSPACE --format json -o /report/banditScanResult.json || true"
+            		    sh "bandit -r $WORKSPACE --format json -o report/banditScanResult.json || true"
             		    sh "cat /report/jenkins-bandit.json"
         			    }
         		}
