@@ -11,15 +11,9 @@ pipeline {
         			steps{
         			    sh "echo Path now is $PATH"
             		    sh "bandit -r $WORKSPACE --format json -o /report/banditScanResult.json || true"
-            		    sh "cat /tmp/jenkins-bandit.json"
+            		    sh "cat /report/jenkins-bandit.json"
         			    }
         		}
-	stage ("Dependency Check with Python Safety"){
-			steps{
-				sh "docker run --rm --volume \$(pwd) pyupio/safety:latest safety check"
-				sh "docker run --rm --volume \$(pwd) pyupio/safety:latest safety check --json > /report/report.json"
-			}
-		}
 	//	stage ("Static Analysis with python-taint"){
 	//		steps{
 	//			sh "docker run --rm --volume \$(pwd) vickyrajagopal/python-taint-docker pyt ."
