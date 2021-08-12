@@ -1,2 +1,2 @@
 echo $PATH
-bandit -r $WORKSPACE --format json
+/home/thanos/.local/bin/bandit -r $WORKSPACE --format json
