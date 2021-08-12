@@ -3,7 +3,7 @@ pipeline {
   environment{
     //For demo jenkins
     	git_cred = credentials('jenkins-pat')
-    	git_url = 'https://github.com/securego/gosec.git'
+    	git_url = "https://github.com/securego/gosec.git"
   }
 
   stages {
@@ -16,7 +16,7 @@ pipeline {
     }
      stage('git-clone') {
         steps {
-                git credentialsId: 'jenkins-pat', url: ${env.git_url}
+                git credentialsId: 'jenkins-pat', url: "${env.git_url}"
         }
       }
     stage('Checkmarx SAST') {
