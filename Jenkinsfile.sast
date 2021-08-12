@@ -5,42 +5,44 @@ pipeline {
     	git_cred = credentials('jenkins-pat')
     }
 
-    stage('Code Scanning') {
-          parallel {
-            stage('Checkmarx Scan') {
-              steps {
-                step([$class: 'CxScanBuilder',
-                        comment: '',
-                        credentialsId: '',
-                        excludeFolders: '.helmignore, build, templates, javadocs',
-                        excludeOpenSourceFolders: '',
-                        exclusionsSetting: 'global',
-                        failBuildOnNewResults: false,
-                        failBuildOnNewSeverity: 'MEDIUM',
-                        filterPattern: '''!**/_cvs/**/*, !Checkmarx/Reports/*.*''',
-                        fullScanCycle: 10,
-                        groupId: '0de2e46c-8410-478a-85b9-b5dce83f8ecb',
-                        includeOpenSourceFolders: '',
-                        osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz',
-                        osaInstallBeforeScan: false,
-                        password: '{}',
-                        preset: '36',
-                        projectName: "${PROJECT_NAME}",
-                        sastEnabled: true,
-                        serverUrl: 'https://checkmarx.abc.com',
-                        sourceEncoding: '1',
-                        username: '',
-                        vulnerabilityThresholdResult: 'FAILURE',
-                        waitForResultsEnabled: true])
+    stages {
+        stage('Code Scanning') {
+              parallel {
+                stage('Checkmarx Scan') {
+                  steps {
+                    step([$class: 'CxScanBuilder',
+                            comment: '',
+                            credentialsId: '',
+                            excludeFolders: '.helmignore, build, templates, javadocs',
+                            excludeOpenSourceFolders: '',
+                            exclusionsSetting: 'global',
+                            failBuildOnNewResults: false,
+                            failBuildOnNewSeverity: 'MEDIUM',
+                            filterPattern: '''!**/_cvs/**/*, !Checkmarx/Reports/*.*''',
+                            fullScanCycle: 10,
+                            groupId: '0de2e46c-8410-478a-85b9-b5dce83f8ecb',
+                            includeOpenSourceFolders: '',
+                            osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz',
+                            osaInstallBeforeScan: false,
+                            password: '{}',
+                            preset: '36',
+                            projectName: "${PROJECT_NAME}",
+                            sastEnabled: true,
+                            serverUrl: 'https://checkmarx.abc.com',
+                            sourceEncoding: '1',
+                            username: '',
+                            vulnerabilityThresholdResult: 'FAILURE',
+                            waitForResultsEnabled: true])
+                  }
+                }
+                stage('Open Source Compliance') {
+                  steps {
+                    //blackduck([appName: "${APP_NAME}", appDomain: "${APP_DOMAIN}", branchName: "master"])
+                    sh 'echo Do blackduck scan here'
+                  }
+                }
               }
-            }
-            stage('Open Source Compliance') {
-              steps {
-                //blackduck([appName: "${APP_NAME}", appDomain: "${APP_DOMAIN}", branchName: "master"])
-                sh 'echo Do blackduck scan here'
-              }
-            }
-          }
+        }
     }
 }
 
