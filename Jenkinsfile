@@ -5,7 +5,7 @@ pipeline {
     stages {
        stage('SCM Checkout') {
         steps {
-                git credentialsId: 'cmgbuild', url: ${GIT_URL}
+              git credentialsId: 'git-personal', url: ${GIT_URL}
         }
       }
        stage('Code Scanning') {
