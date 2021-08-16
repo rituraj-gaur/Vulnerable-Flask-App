@@ -1,31 +1,13 @@
-	
-        	stage('Setup parameters') {
-                                   steps {
-                                       script {
-                                           properties([
-                                               parameters([
-                                                  string(
-                                                      defaultValue: 'scriptcrunch',
-                                                      name: 'PROJECT_NAME',
-                                                      trim: true
-                                                  ),
-                                                  string(
-                                                        defaultValue: 'scriptcrunch',
-                                                        name: 'PROJECT_NAME',
-                                                        trim: true
-                                                  ),
-                                                   string(
-                                                       defaultValue: 'scriptcrunch',
-                                                       name: 'PROJECT_NAME',
-                                                       trim: true
-                                                   )
-                                               ])
-                                           ])
-                                       }
-                                   }
-                               }
-                    }
-                }
+pipeline {
+	agent any
+	parameters {
+           // choice(name: 'TEAM_NAME', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+            string(name: 'GIT_URL', defaultValue: 'None', description: 'Repo to scan')
+            string(name: 'PROJECT_NAME', defaultValue: 'None', description: 'CxSAST project name')
+            string(name: 'TEAM_NAME', defaultValue: 'None', description: 'CxSAST Team name')
+        }
+
+	stages {
 		stage ("Git Checkout"){
 		    steps {
 				git credentialsId: 'git-personal', url: "${GIT_URL}", branch: 'master'
@@ -51,3 +33,5 @@
 			    }
 			}
 		}
+    }
+}
