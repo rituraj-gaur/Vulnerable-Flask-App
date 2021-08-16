@@ -2,10 +2,9 @@ pipeline {
 	agent any
 	options { skipDefaultCheckout() }
 	parameters {
-            choice(name: 'TEAM_NAME', choices: ['/CxServer/PAS/Product/ECS', '/CxServer/PAS/Product/ECS/PROD', '/CxServer/PAS/Product/ECS/DEV'], description: 'Team Name : Scan will be mapped under this Team')
-            string(name: 'GIT_URL', defaultValue: '', description: 'Repo to scan')
-            string(name: 'PROJECT_NAME', defaultValue: '', description: 'CxSAST project name')
-           // string(name: 'TEAM_NAME', defaultValue: '', description: 'CxSAST Team name')
+            string(name: 'GIT_URL', defaultValue: '', description: 'Enter git repo to be scanned by Checkmarx')
+            string(name: 'PROJECT_NAME', defaultValue: '', description: 'Project to which this scan will be mapped')
+	    choice(name: 'TEAM_NAME', choices: ['/CxServer/PAS/Product/ECS', '/CxServer/PAS/Product/ECS/PROD', '/CxServer/PAS/Product/ECS/DEV'], description: 'Checkmarx Team : Maps to the USS Product')
         }
 
 	stages {
