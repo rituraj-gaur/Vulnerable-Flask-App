@@ -1,6 +1,4 @@
-pipeline {
-	agent any
-	stages {
+stages {
 		stage('Setup parameters') {
                     steps {
                        // script {
