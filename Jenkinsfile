@@ -1,5 +1,6 @@
 pipeline {
 	agent any
+	options { skipDefaultCheckout() }
 	parameters {
            // choice(name: 'TEAM_NAME', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
             string(name: 'GIT_URL', defaultValue: 'None', description: 'Repo to scan')
