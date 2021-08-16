@@ -2,10 +2,10 @@ pipeline {
 	agent any
 	options { skipDefaultCheckout() }
 	parameters {
-           // choice(name: 'TEAM_NAME', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-            string(name: 'GIT_URL', defaultValue: 'None', description: 'Repo to scan')
-            string(name: 'PROJECT_NAME', defaultValue: 'None', description: 'CxSAST project name')
-            string(name: 'TEAM_NAME', defaultValue: 'None', description: 'CxSAST Team name')
+            choice(name: 'TEAM_NAME', choices: ['/CxServer/PAS/Product/ECS', '/CxServer/PAS/Product/ECS/PROD', '/CxServer/PAS/Product/ECS/DEV'], description: 'Team Name : Scan will be mapped under this Team')
+            string(name: 'GIT_URL', defaultValue: '', description: 'Repo to scan')
+            string(name: 'PROJECT_NAME', defaultValue: '', description: 'CxSAST project name')
+           // string(name: 'TEAM_NAME', defaultValue: '', description: 'CxSAST Team name')
         }
 
 	stages {
@@ -32,6 +32,8 @@ pipeline {
 							  !**/*.stml, !**/*.ttml, !**/*.txn, !**/*.xhtm, !**/*.xhtml, !**/*.class, !**/*.iml, !Checkmarx/Reports/*.*,
 							  !OSADependencies.json, !**/node_modules/**/*''', fullScanCycle: 10, generatePdfReport: true, groupId: '359', highThreshold: 10, lowThreshold: 30, mediumThreshold: 20, password: '{AQAAABAAAAAQfL38SC5sZNTFCBDu86vFY6gnk53MITuDNA+pyWMtTcU=}', preset: '36', projectName: "${PROJECT_NAME}", sastEnabled: true, serverUrl: 'https://cx.dell.com', sourceEncoding: '1', username: '', teamPath: "${TEAM_NAME}",vulnerabilityThresholdEnabled: true, vulnerabilityThresholdResult: 'FAILURE', waitForResultsEnabled: true])
 			 }
-		}
+		 }
     }
 }
+
+
