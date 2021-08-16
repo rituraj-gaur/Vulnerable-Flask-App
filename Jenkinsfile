@@ -8,22 +8,22 @@ pipeline {
                        // }
                        stage('Setup parameters') {
                                    steps {
-                                       script { 
+                                       script {
                                            properties([
                                                parameters([
                                                   string(
-                                                      defaultValue: 'scriptcrunch', 
-                                                      name: 'PROJECT_NAME', 
+                                                      defaultValue: 'scriptcrunch',
+                                                      name: 'PROJECT_NAME',
                                                       trim: true
-                                                  ),                                                  
+                                                  ),
                                                   string(
-                                                        defaultValue: 'scriptcrunch', 
-                                                        name: 'PROJECT_NAME', 
+                                                        defaultValue: 'scriptcrunch',
+                                                        name: 'PROJECT_NAME',
                                                         trim: true
                                                   ),
                                                    string(
-                                                       defaultValue: 'scriptcrunch', 
-                                                       name: 'PROJECT_NAME', 
+                                                       defaultValue: 'scriptcrunch',
+                                                       name: 'PROJECT_NAME',
                                                        trim: true
                                                    )
                                                ])
@@ -58,5 +58,4 @@ pipeline {
 			    }
 			}
 		}
-	}
 }
